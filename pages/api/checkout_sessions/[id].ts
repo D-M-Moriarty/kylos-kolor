@@ -10,7 +10,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const id: string = req.query.id as string
+  const id: string = req.query.id as Stripe.Checkout.SessionCreateParams.LineItem[]
   try {
     if (!id.startsWith('cs_')) {
       throw Error('Incorrect CheckoutSession ID.')
