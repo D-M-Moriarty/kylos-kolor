@@ -20,7 +20,6 @@ export default function Slug() {
             '/image-product-4.jpg',
         ],
     };
-    return (
-        <Product product={nioxins[0]} />
-    )
+    return <Product product={nioxins[0]} />
+    
 }

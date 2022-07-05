@@ -5,20 +5,21 @@ import Image from 'next/image';
 import Carousel from './carousel/carousel';
 import IProduct from "@model/product";
 
-export default function Product(props: { product: IProduct }) {
-    const [productQuantity, setProductQuantity] = useState(props.product.quantity);
+const Product: React.FC<IProduct> = ({ product }) => {
+    const [productQuantity, setProductQuantity] = useState(product.quantity);
     function handleProductDecrement() {
         setProductQuantity(productQuantity - 1);
     }
 
     function handleProductIncrement() {
         setProductQuantity(productQuantity + 1);
+        console.log(productQuantity)
     }
 
     function productDetails(product: IProduct) {
         return (
             <div className="md:grid md:grid-cols-2 md:py-16">
-                <Carousel imagePaths={props.product.images}></Carousel>
+                <Carousel imagePaths={product.images}></Carousel>
                 <div className="p-6 md:px-12 md:my-auto">
                     <p className="text-xs font-bold uppercase text-primary">
                         {product.brand}
@@ -59,8 +60,6 @@ export default function Product(props: { product: IProduct }) {
                             handleProductDecrement={handleProductDecrement}
                             handleProductIncrement={handleProductIncrement}
                         ></ItemQuantity>
-                    </div>
-                    <div className="md:flex md:gap-4">
                         <button
                             className="w-4/6 font-semibold text-white normal-case btn btn-primary md:w-2/3 md:gap-4"
                             onClick={() => { }}
@@ -79,6 +78,7 @@ export default function Product(props: { product: IProduct }) {
     }
 
     return (
-        productDetails(props.product)
+        productDetails(product)
     )
 }
+export default Product
