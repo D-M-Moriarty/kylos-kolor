@@ -4,7 +4,7 @@ import React from 'react';
 
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Product from '../components/Product';
+import Product from '@components/Product';
 
 export default {
     /* 👇 The title prop is optional.
@@ -28,7 +28,7 @@ const product = <Product
     images={[
         '../../assets/image-product-1.jpg',
         '../../assets/image-product-2.jpg',
-        '../../assets/image-product-3.jpg',
+        '../../assets/image-product-3.jpg', 
         '../../assets/image-product-4.jpg',
     ]}
     name="Fall Limited Edition Sneakers"
