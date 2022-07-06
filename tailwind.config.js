@@ -21,6 +21,7 @@ module.exports = {
   daisyui: {
     themes: [
       "fantasy",
+      // "cupcake",
       // {
       //   mytheme: {
       //     primary: 'hsl(26, 100%, 55%)',

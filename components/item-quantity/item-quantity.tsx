@@ -21,7 +21,7 @@ export function ItemQuantity(props: ItemQuantityProps) {
       <input
         type="text"
         min={0}
-        value={props.quantity}
+        defaultValue={props.quantity}
         className="w-1/2 max-w-xs font-bold text-center border-8 border-none rounded-none input font-very-dark-blue bg-light-grayish-blue"
       />
       <button

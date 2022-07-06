@@ -72,6 +72,10 @@ body {
   justify-content: center;
 }
 
+.home-hero {
+  background-image: url(https://placeimg.com/1000/800/arch);
+}
+
 .container {
   max-width: var(--container-width-max);
   padding: 45px 25px;

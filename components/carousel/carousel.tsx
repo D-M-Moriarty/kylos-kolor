@@ -15,7 +15,7 @@ export function Carousel(props: CarouselProps) {
     <div className="w-full h-full carousel">
       <div id="slide1" className="relative w-full carousel-item">
         <Image src={props.imagePaths[0]} alt="Product 1" className="w-full" layout='fill'
-          objectFit='contain' />track
+          objectFit='contain' />
         <div className="absolute flex justify-between transform -translate-y-1/2 left-2 right-2 top-1/2">
           <a
             href="#slide4"

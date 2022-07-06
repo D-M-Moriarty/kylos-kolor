@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import Navigation from '@components/navigation/Navigation'
+import Footer from '@components/navigation/Footer'
 
 type Props = {
   children: ReactNode
@@ -29,23 +31,13 @@ const Layout = ({
       />
     </Head>
     <div className="container">
-      <header>
-        <div className="header-content">
-          <Link href="/">
-            <a className="logo">
-              <img src="/logo.png" />
-            </a>
-          </Link>
-          <h1>
-            <span className="light">Stripe Sample</span>
-            <br />
-            Next.js, TypeScript, and Stripe 🔒💸
-          </h1>
-        </div>
-      </header>
-      {children}
+      <div className="flex flex-col">
+        <Navigation />
+        {children}
+        <Footer />
+      </div>
     </div>
-    <div className="banner">
+    {/* <div className="banner">
       <span>
         This is a{' '}
         <a
@@ -65,7 +57,7 @@ const Layout = ({
         </a>
         .
       </span>
-    </div>
+    </div> */}
   </>
 )
 
