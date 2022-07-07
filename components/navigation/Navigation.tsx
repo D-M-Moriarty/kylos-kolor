@@ -1,3 +1,4 @@
+import Link from "next/link"
 import React from "react"
 
 const Navigation: React.FC<any> = ({ data }) => {
@@ -23,11 +24,13 @@ const Navigation: React.FC<any> = ({ data }) => {
                         <li><a>Item 3</a></li>
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">Kylos Kolor</a>
+                <Link href="/">
+                    <a className="btn btn-ghost normal-case text-xl">Kylos Kolor</a>
+                </Link>
             </div>
             <div className="navbar-center hidden lg:flex navbar-end">
                 <ul className="menu menu-horizontal p-0">
-                    <li><a>Item 1</a></li>
+                    <li><Link href="/product/234"><a>Product</a></Link></li>
                     <li tabIndex="0">
                         <a>
                             Parent

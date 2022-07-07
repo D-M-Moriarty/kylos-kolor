@@ -30,12 +30,10 @@ const Layout = ({
         content="https://nextjs-typescript-react-stripe-js.vercel.app/social_card.png"
       />
     </Head>
-    <div className="container">
-      <div className="flex flex-col">
-        <Navigation />
-        {children}
-        <Footer />
-      </div>
+    <div className="w-screen mt-4">
+      <Navigation />
+      {children}
+      <Footer />
     </div>
     {/* <div className="banner">
       <span>
