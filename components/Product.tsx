@@ -4,8 +4,10 @@ import CartIcon from '@public/icon-cart.svg'
 import Image from 'next/image';
 import Carousel from './carousel/carousel';
 import IProduct from "@model/product";
+import { useShoppingCart } from 'use-shopping-cart/react';
 
 const Product: React.FC<IProduct> = ({ product }) => {
+    const { addItem } = useShoppingCart()
     const [productQuantity, setProductQuantity] = useState(product.quantity);
     function handleProductDecrement() {
         setProductQuantity(productQuantity - 1);
@@ -62,7 +64,10 @@ const Product: React.FC<IProduct> = ({ product }) => {
                         ></ItemQuantity>
                         <button
                             className="w-4/6 font-semibold text-white normal-case btn btn-primary md:w-2/3 md:gap-4"
-                            onClick={() => { }}
+                            onClick={() => {
+                                console.log(product)
+                                addItem(product)
+                              }}
                         >
                             <Image
                                 src={CartIcon}

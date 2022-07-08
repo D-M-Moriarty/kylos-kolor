@@ -3,6 +3,8 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Navigation from '@components/navigation/Navigation'
 import Footer from '@components/navigation/Footer'
+import * as config from '../config'
+import { CartProvider } from 'use-shopping-cart/react'
 
 type Props = {
   children: ReactNode
@@ -30,11 +32,22 @@ const Layout = ({
         content="https://nextjs-typescript-react-stripe-js.vercel.app/social_card.png"
       />
     </Head>
-    <div className="w-screen mt-4">
-      <Navigation />
-      {children}
-      <Footer />
-    </div>
+    <CartProvider
+      mode="payment"
+      cartMode="checkout-session"
+      stripe={process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string}
+      successUrl="stripe.com"
+      cancelUrl="twitter.com/dayhaysoos"
+      currency={config.CURRENCY}
+      allowedCountries={['US', 'GB', 'CA']}
+      billingAddressCollection={true}
+    >
+      <div className="w-screen mt-4">
+        <Navigation />
+        {children}
+        <Footer />
+      </div>
+    </CartProvider>
     {/* <div className="banner">
       <span>
         This is a{' '}
