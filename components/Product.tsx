@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ItemQuantity from './item-quantity/item-quantity';
 import CartIcon from '@public/icon-cart.svg'
 import Image from 'next/image';
@@ -6,21 +6,13 @@ import Carousel from './carousel/carousel';
 import IProduct from "@model/product";
 import { useShoppingCart } from 'use-shopping-cart/react';
 
-export interface SellingProps {
-    product: Product;
-    quantity: number;
-}
-
 const Product: React.FC<IProduct> = ({ product }) => {
-    const { addItem } = useShoppingCart()
-    const [productQuantity, setProductQuantity] = useState(product.quantity);
-    function handleProductDecrement() {
-        setProductQuantity(productQuantity - 1);
-    }
+    const { addItem, clearCart } = useShoppingCart()
 
-    function handleProductIncrement() {
-        setProductQuantity(productQuantity + 1);
-    }
+    useEffect(() => {
+
+        clearCart()
+    }, [])
 
     function productDetails(prod: IProduct) {
         return (
@@ -61,16 +53,10 @@ const Product: React.FC<IProduct> = ({ product }) => {
                         </div>
                     </div>
                     <div className="md:flex md:gap-4">
-                        <ItemQuantity
-                            quantity={productQuantity}
-                            handleProductDecrement={handleProductDecrement}
-                            handleProductIncrement={handleProductIncrement}
-                        ></ItemQuantity>
                         <button
                             className="w-4/6 font-semibold text-white normal-case btn btn-primary md:w-2/3 md:gap-4"
                             onClick={() => {
                                 console.log(prod)
-                                prod.quantity = productQuantity;
                                 addItem(prod)
                             }}
                         >

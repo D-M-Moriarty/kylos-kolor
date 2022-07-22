@@ -5,6 +5,5 @@ export default interface IProduct {
     description: string;
     price: number;
     discount: number;
-    quantity: number;
     images: string[];
 }
