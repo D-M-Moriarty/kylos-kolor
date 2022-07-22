@@ -5,6 +5,8 @@ import Image from 'next/image';
 import Carousel from './carousel/carousel';
 import IProduct from "@model/product";
 import { useShoppingCart } from 'use-shopping-cart/react';
+import { IShoppingCartProduct } from '@model/use-shopping-cart-product';
+import { formatCurrencyString } from 'use-shopping-cart/core'
 
 const Product: React.FC<IProduct> = ({ product }) => {
     const { addItem, clearCart } = useShoppingCart()
@@ -13,6 +15,22 @@ const Product: React.FC<IProduct> = ({ product }) => {
 
         clearCart()
     }, [])
+
+    const convertProduct = (prod: IProduct): Partial<IShoppingCartProduct> => {
+        return {
+            name: prod.name,
+            description: prod.description,
+            id: prod.id,
+            price: calcPrice(prod),
+            image: prod.images[0],
+        }
+    }
+
+    const calcPrice = (prod: IProduct): number => {
+        return prod.discount > 0
+            ? ((prod.price * prod.discount) / 100)
+            : prod.price;
+    }
 
     function productDetails(prod: IProduct) {
         return (
@@ -31,10 +49,7 @@ const Product: React.FC<IProduct> = ({ product }) => {
                     <div className="flex flex-row pb-6 md:flex-col">
                         <div className="flex flex-row items-center justify-start flex-1">
                             <p className="pr-4 text-2xl font-bold text-very-dark-blue">
-                                ${' '}
-                                {prod.discount > 0
-                                    ? ((prod.price * prod.discount) / 100).toFixed(2)
-                                    : prod.price.toFixed(2)}
+                                {formatCurrencyString({ value: calcPrice(prod), currency: 'USD' })}
                             </p>
                             {prod.discount ? (
                                 <p className="p-1 text-sm font-bold rounded text-primary bg-pale-orange">
@@ -46,7 +61,7 @@ const Product: React.FC<IProduct> = ({ product }) => {
                             {prod.discount ? (
                                 <div className="flex items-center justify-end flex-1 md:flex md:justify-start md:py-2">
                                     <p className="font-bold line-through text-grayish-blue">
-                                        $ {prod.price.toFixed(2)}
+                                        {formatCurrencyString({ value: prod.price, currency: 'USD' })}
                                     </p>
                                 </div>
                             ) : null}
@@ -56,8 +71,8 @@ const Product: React.FC<IProduct> = ({ product }) => {
                         <button
                             className="w-4/6 font-semibold text-white normal-case btn btn-primary md:w-2/3 md:gap-4"
                             onClick={() => {
-                                console.log(prod)
-                                addItem(prod)
+                                const product = convertProduct(prod);
+                                addItem(product)
                             }}
                         >
                             <Image

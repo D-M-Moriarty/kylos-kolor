@@ -5,7 +5,7 @@ const nioxins = [
         name: 'Nioxin Cleanser Shampoo System 2',
         description:
             "Nioxin’s cleanser shampoo system 2 for natural hair with progressed thinning is the first step of a three part Nioxin regimen, specially formulated to strengthen the hair and amplify hair structure. It prepares hair and scalp for a complete hair thickening treatment with nioxin’s three part System 2. This professional derma-purifying Cleanser Shampoo removes dirt, excessive oil and other environmental residues from the scalp and hair.",
-        price: 50,
+        price: 5000,
         quantity: 0,
         discount: 50,
         images: [

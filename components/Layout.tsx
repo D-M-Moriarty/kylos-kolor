@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Navigation from '@components/navigation/Navigation'
 import Footer from '@components/navigation/Footer'
 import * as config from '../config'
-import { CartProvider } from 'use-shopping-cart/react'
+import { CartProvider, DebugCart } from 'use-shopping-cart/react'
 
 type Props = {
   children: ReactNode
@@ -47,6 +47,7 @@ const Layout = ({
         {children}
         <Footer />
       </div>
+      <DebugCart />
     </CartProvider>
     {/* <div className="banner">
       <span>

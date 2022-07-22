@@ -66,7 +66,9 @@ const Navigation: React.FC<any> = ({ data }) => {
                             <span className="font-bold text-lg">{cartCount} Items</span>
                             <span className="text-info">Subtotal: €{totalPrice}</span>
                             <div className="card-actions">
-                                <button className="btn btn-primary btn-block">View cart</button>
+                                <Link href="/use-shopping-cart">
+                                    <button className="btn btn-primary btn-block">View cart</button>
+                                </Link>
                             </div>
                         </div>
                     </div>

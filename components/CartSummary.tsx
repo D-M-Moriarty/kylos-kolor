@@ -11,6 +11,7 @@ const CartSummary = () => {
   const [errorMessage, setErrorMessage] = useState('')
   const {
     formattedTotalPrice,
+    totalPrice,
     cartCount,
     clearCart,
     cartDetails,
@@ -52,7 +53,7 @@ const CartSummary = () => {
         <strong>Number of Items:</strong> {cartCount}
       </p>
       <p suppressHydrationWarning>
-        <strong>Total:</strong> {formattedTotalPrice}
+        <strong>Total:</strong> {totalPrice}
       </p>
 
       {/* Redirects the user to Stripe */}
