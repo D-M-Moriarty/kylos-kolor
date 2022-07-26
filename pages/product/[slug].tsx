@@ -5,7 +5,7 @@ import nioxins from "@data/nioxin-products";
 export default function Slug() {
 
     const product = {
-        id: 1,
+        id: '1',
         brand: 'Sneaker Company',
         name: 'Fall Limited Edition Sneakers',
         description:

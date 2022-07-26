@@ -1,6 +1,8 @@
 import { formatCurrencyString } from 'use-shopping-cart'
 import { useShoppingCart } from 'use-shopping-cart/react'
 import Image from 'next/image';
+import { fetchPostJSON } from '@utils/api-helpers';
+import { useState } from 'react';
 
 const Products = () => {
   const {
@@ -12,21 +14,25 @@ const Products = () => {
     clearCart,
     setItemQuantity
   } = useShoppingCart()
+  const [errorMessage, setErrorMessage] = useState('')
+  const [loading, setLoading] = useState(false)
 
   async function handleSubmit(event) {
     event.preventDefault()
 
-    const response = await fetch('/.netlify/functions/create-session', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(cartDetails)
-    })
-      .then((res) => res.json())
-      .catch((error) => console.log(error))
+    const response = await fetchPostJSON(
+      '/api/checkout_sessions/cart',
+      cartDetails
+    )
 
-    redirectToCheckout({ sessionId: response.sessionId })
+    if (response.statusCode > 399) {
+      console.error(response.message)
+      setErrorMessage(response.message)
+      setLoading(false)
+      return
+    }
+
+    redirectToCheckout({ sessionId: response.id })
   }
 
   async function handleCheckout(event) {

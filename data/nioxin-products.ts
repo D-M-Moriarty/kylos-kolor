@@ -1,6 +1,6 @@
 const nioxins = [
     {
-        id: 1,
+        id: 'sku_GBJ2Ep8246qeeT',
         brand: 'Nioxin',
         name: 'Nioxin Cleanser Shampoo System 2',
         description:
@@ -15,6 +15,7 @@ const nioxins = [
             '/nioxin/4.webp',
             '/nioxin/5.webp',
         ],
+        currency: 'USD',
     }
 ];
 

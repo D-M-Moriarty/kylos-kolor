@@ -47,7 +47,7 @@ const Layout = ({
         {children}
         <Footer />
       </div>
-      <DebugCart />
+      {/* <DebugCart /> */}
     </CartProvider>
     {/* <div className="banner">
       <span>
